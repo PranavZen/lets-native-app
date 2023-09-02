@@ -2,14 +2,18 @@
 import React, { useState } from 'react';
 import { StyleSheet, View, ImageBackground, Text, TextInput, TouchableOpacity, ScrollView } from 'react-native';
 import { FontAwesome5 } from '@expo/vector-icons';
+import { MaterialIcons } from '@expo/vector-icons';
 const ContactDetailScreen = ({ navigation }) => {
     const [email, setEmail] = useState("");
     const [mobile, setMobile] = useState("");
     return (
 
-        <ScrollView contentContainerStyle={styles.scrollViewContent}>
+        <ScrollView contentContainerStyle={styles.scrollViewContent} showsVerticalScrollIndicator={false}>
             <ImageBackground source={require('../assets/images/lets-bg.png')}
                 style={styles.mainBgImage}>
+                <TouchableOpacity style={styles.backBtn} onPress={() => navigation.goBack()}>
+                    <MaterialIcons name="arrow-back-ios" size={24} color="black" />
+                </TouchableOpacity>
                 <Text style={styles.mainText}>Contact Details</Text>
                 <View style={styles.formContainer}>
                     <View style={styles.formRow}>
@@ -28,7 +32,7 @@ const ContactDetailScreen = ({ navigation }) => {
                             style={styles.input} />
                     </View>
                     <View style={styles.forwordBtnWrap}>
-                        
+
                         <TouchableOpacity style={styles.forwordBtn} onPress={() => navigation.navigate("EmailVerify")}>
                             <FontAwesome5 name="arrow-right" size={22} color="#fff" />
                         </TouchableOpacity>
@@ -54,11 +58,21 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
     },
+    backBtn:{
+        position: "absolute",
+        left: 8,
+        top: 35,
+        width: 50,
+        height: 50,
+        borderRadius: 50,
+        justifyContent: "center",
+        alignItems: "center",
+    },
     mainText: {
         color: "#1B232A",
         fontSize: 20,
         fontWeight: "bold",
-        marginBottom: 8,
+        marginBottom: 15,
         paddingTop: 120,
         textTransform: "uppercase",
     },
@@ -82,11 +96,11 @@ const styles = StyleSheet.create({
         height: 55,
         width: "100%",
         paddingHorizontal: 10,
-        backgroundColor: "#E1E3E9",
+        backgroundColor: "#F7F8FB",
         color: "#1B232A",
         borderRadius: 8,
         borderWidth: 1,
-        borderColor: "#0033AD",
+        borderColor: "#1B1711",
         fontSize: 12,
         overflow: "hidden"
     },
@@ -119,6 +133,7 @@ const styles = StyleSheet.create({
         justifyContent: "center",
         alignItems: "center",
         backgroundColor: "rgba(0, 0, 0, 0.5)",
+       
     },
     modalContent: {
         backgroundColor: "#FFFFFF",

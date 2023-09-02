@@ -1,10 +1,9 @@
 
-import React, { useState } from 'react';
-import { StyleSheet, View, ImageBackground, Text, TextInput, TouchableOpacity, ScrollView } from 'react-native';
-import { FontAwesome5 } from '@expo/vector-icons';
+import React from 'react';
+import { StyleSheet, View, ImageBackground, Text, TouchableOpacity, ScrollView, Image } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
-const EmailVerificationScreen = ({ navigation }) => {
-    const [otp, setOtp] = useState("");
+const UploadImagesScreen = ({ navigation }) => {
+
     return (
 
         <ScrollView contentContainerStyle={styles.scrollViewContent} showsVerticalScrollIndicator={false}>
@@ -13,25 +12,18 @@ const EmailVerificationScreen = ({ navigation }) => {
                 <TouchableOpacity style={styles.backBtn} onPress={() => navigation.goBack()}>
                     <MaterialIcons name="arrow-back-ios" size={24} color="black" />
                 </TouchableOpacity>
-                <Text style={styles.mainText}>Email Verification</Text>
+                <Text style={styles.mainText}>Uplaod 3 Images</Text>
                 <View style={styles.formContainer}>
                     <View style={styles.formRow}>
-                        <View style={styles.pswdTextWrap}>
-                            <Text style={styles.inputLabel}>Email OTP</Text>
+                        <View style={styles.upImgWrapper}>
+                            <Image style={styles.upImg} source={require('../assets/images/up_images_icon.png')} />
                         </View>
-                        <TextInput value={otp}
-                            onChangeText={(text) => setOtp(text)}
-                            placeholder="Enter OTP from email"
-                            style={styles.input} />
                     </View>
                     <View style={styles.sendOtpWrapper}>
-                        <TouchableOpacity style={styles.otpBtn}>
+                        <TouchableOpacity style={styles.otpBtn} onPress={() => navigation.navigate("UploadImagesSuccess")}>
                             <Text style={styles.btnText}>
-                                RESEND OTP in 00:30
+                                Select Images
                             </Text>
-                        </TouchableOpacity>
-                        <TouchableOpacity style={styles.forwordBtn} onPress={() => navigation.navigate("UploadImages")}>
-                            <FontAwesome5 name="arrow-right" size={22} color="#fff" />
                         </TouchableOpacity>
                     </View>
 
@@ -42,7 +34,7 @@ const EmailVerificationScreen = ({ navigation }) => {
     );
 };
 
-export default EmailVerificationScreen;
+export default UploadImagesScreen;
 
 const styles = StyleSheet.create({
     scrollViewContent: {
@@ -81,55 +73,20 @@ const styles = StyleSheet.create({
         marginBottom: 10,
 
     },
-    inputLabel: {
-        fontSize: 13,
-        fontWeight: "700",
-        color: "#065EFE",
-        paddingHorizontal: 10,
-        marginBottom: 6,
-    },
-    input: {
-        position: "relative",
-        height: 55,
-        width: "100%",
-        paddingHorizontal: 10,
-        backgroundColor: "#F7F8FB",
-        color: "#1B232A",
-        borderRadius: 8,
-        borderWidth: 1,
-        borderColor: "#1B1711",
-        fontSize: 12,
-        overflow: "hidden"
-    },
-    pswdTextWrap: {
-        flexDirection: "row",
-        justifyContent: "space-between",
-        alignItems: "center",
+    upImg: {
+        alignSelf: "center",
+        marginTop: 80,
     },
     sendOtpWrapper: {
         width: "100%",
         flexDirection: "row",
-        justifyContent: "space-between",
+        justifyContent: "center",
         alignItems: "center",
         marginTop: 100,
     },
-    forwordBtn: {
-        backgroundColor: "#065EFE",
-        width: 50,
-        height: 50,
-        borderRadius: 50,
-        justifyContent: "center",
-        alignItems: "center",
-    },
-
-    inputText: {
-        fontSize: 12,
-        color: "#8e8e8e",
-        paddingTop: 16
-    },
     otpBtn: {
         backgroundColor: "#065EFE",
-        width: 200,
+        width: "80%",
         alignItems: "center",
         paddingVertical: 15,
         borderRadius: 10,

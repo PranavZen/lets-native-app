@@ -7,6 +7,8 @@ import SignInScreen from '../screens/SignInScreen';
 import PersonalDetailsScreen from '../screens/PersonalDetailsScreen';
 import ContactDetailScreen from '../screens/ContactDetailScreen';
 import EmailVerificationScreen from '../screens/EmailVerificationScreen';
+import UploadImagesScreen from '../screens/UploadImagesScreen';
+import UpImagesSuccessfulScreen from '../screens/UpImagesSuccessfulScreen';
 
 const AppNavigation = () => {
 
@@ -19,6 +21,8 @@ const AppNavigation = () => {
                 <Stack.Screen name='PersonalDetails' component={PersonalDetailsScreen} options={{ headerShown: false }} />
                 <Stack.Screen name='ContactDetail' component={ContactDetailScreen} options={{ headerShown: false }} />
                 <Stack.Screen name='EmailVerify' component={EmailVerificationScreen} options={{ headerShown: false }} />
+                <Stack.Screen name='UploadImages' component={UploadImagesScreen} options={{ headerShown: false }} />
+                <Stack.Screen name='UploadImagesSuccess' component={UpImagesSuccessfulScreen} options={{ headerShown: false }} />
             </Stack.Navigator>
         </NavigationContainer>
     )
